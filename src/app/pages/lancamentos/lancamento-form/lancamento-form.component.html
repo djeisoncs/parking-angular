@@ -24,7 +24,7 @@
                 <div class="ui-g-12 ui-md-3 ui-lg-3">
                     <label for="placaInput">Veiculo</label>
                     <p-autoComplete id="placaInput" [(ngModel)]="veiculo" [suggestions]="veiculos" (completeMethod)="filterVeiculo($event)" field="placa" [size]="30"
-                        (onBlur)="teste($event)" formControlName="placaInput" placeholder="Veiculo" [minLength]="1"></p-autoComplete>
+                        (onBlur)="prencherCliente($event)" formControlName="placaInput" placeholder="Veiculo" [minLength]="1"></p-autoComplete>
                 </div>                                
                 <div class="ui-g-12 ui-md-5 ui-lg-5">
                     <label for="cliente">Cliente</label>

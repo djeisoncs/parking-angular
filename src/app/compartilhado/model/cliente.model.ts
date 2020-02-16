@@ -13,8 +13,7 @@ export class Cliente extends BaseResourceModel {
     constructor(
         public nome?: string,
         public cpf?: string,
-        public telefone?: string,
-        public dataCadastro?: number
+        public telefone?: string
     ){
         super();
     }

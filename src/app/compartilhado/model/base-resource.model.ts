@@ -4,4 +4,6 @@
  */
 export abstract class BaseResourceModel {
     id?: number;
+    dataCadastro?: number;     
+    dataEdicao?: number;
 }

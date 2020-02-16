@@ -30,17 +30,17 @@ export class LancamentoFormComponent extends BaseComponenteFormComponent<Lancame
     super(injector, new Lancamento(), service, Lancamento.fromJson);
   }
 
-      /**
-     * Método responsável por fazer as operações necessária para o momento que o componente é acionado
-     * @author Djeison 13 de fev de 2020 
-     */    
-    ngOnInit() {
-      super.ngOnInit();
-      if ((sessionStorage['idPatio'] == null) || (sessionStorage['idPatio'] == ''))
-        this.router.navigate(['/home']);
-      else
-        this.patio.id = sessionStorage['idPatio'];
-    }
+  /**
+   * Método responsável por fazer as operações necessária para o momento que o componente é acionado
+   * @author Djeison 13 de fev de 2020 
+   */    
+  ngOnInit() {
+    super.ngOnInit();
+    if ((sessionStorage['idPatio'] == null) || (sessionStorage['idPatio'] == ''))
+      this.router.navigate(['/home']);
+    else
+      this.patio.id = sessionStorage['idPatio'];
+  }
 
 
   protected gerarForm() {
@@ -59,12 +59,15 @@ export class LancamentoFormComponent extends BaseComponenteFormComponent<Lancame
   protected edtiPageTitle(): string {
     const nomeEntidade = this.entidade.veiculo.placa || '';
     return 'Editando Lancamento: '+nomeEntidade;
-  }
-  teste(event) {
+  } 
+
+  
+  prencherCliente(event) {
     if (this.veiculos.length == 1)
-      this.form.get('cliente').value(this.veiculos[0].cliente.cpf)
+      this.form.get('cliente').setValue(this.veiculos[0].cliente.nome);
   }
   filterVeiculo(event) {
+    this.form.get('cliente').setValue("");
     if (event.query.length >= 3) {
       if (this.veiculos.length > 0) {
         this.filterVeiculos(event.query, this.veiculos);
@@ -86,8 +89,6 @@ export class LancamentoFormComponent extends BaseComponenteFormComponent<Lancame
       }
     });
     this.veiculos = veiculosFiltrados;
-    /*if (this.veiculos.length == 1)
-      this.form.get('cliente').value(this.veiculos[0].cliente.cpf)*/
   }
 
   

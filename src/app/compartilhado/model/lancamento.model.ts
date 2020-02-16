@@ -18,9 +18,7 @@ export class Lancamento extends BaseResourceModel {
         public valorTotal?: number,
         public patio?: Patio,
         public veiculo?: Veiculo,
-        public cliente?: Cliente,
-        public dataCadastro?: number,
-        public dataEdicao?: number
+        public cliente?: Cliente        
     ){
         super();
     }

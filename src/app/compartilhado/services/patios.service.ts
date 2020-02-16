@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { BaseService } from './base.service';
 import { Patio } from '../model/patio.model';
-import { PatioForm } from '../model/Patio-form.model';
+import { PatioFormulario } from '../model/patio-formulario.model';
 import { Observable } from 'rxjs';
 import { environment as env } from '../../../environments/environment';
 import { catchError, map } from 'rxjs/operators';
@@ -28,14 +28,29 @@ export class PatiosService extends BaseService<Patio> {
    * @param patio
    * @returns patioForm
   */
-  converterPatioToPatioForm(patio: Patio): PatioForm {
-    let patioForm: PatioForm = new PatioForm();
+  converterPatioToPatioForm(patio: Patio): PatioFormulario {
+    let patioForm: PatioFormulario = new PatioFormulario();
     patioForm.id = patio.id;
     patioForm.descricao = patio.descricao;
     patioForm.numVagas = patio.numVagas;
     patioForm.valorHora = this.formatarValor(patio.valorHora);
     return patioForm;
   }
+
+  /**
+   * Método responsável por converter a entidade patio para patioForm
+   * @author Djeison 13 de fev de 2020 
+   * @param patio
+   * @returns patioForm
+  */
+ converterPatioFormToPatio(patioForm: PatioFormulario): Patio {
+  let patio: Patio = new Patio();
+  patio.id = patioForm.id;
+  patio.descricao = patioForm.descricao;
+  patio.numVagas = patioForm.numVagas;
+  patio.valorHora = this.retirarFormatacaoNumero(+patioForm.valorHora);
+  return patio;
+}
 
   /**
    * Método responsável pesquisar patios por descricao

@@ -61,11 +61,11 @@ export class LancamentoFormComponent extends BaseComponenteFormComponent<Lancame
     return 'Editando Lancamento: '+nomeEntidade;
   } 
 
-  
   prencherCliente(event) {
-    if (this.veiculos.length == 1)
-      this.form.get('cliente').setValue(this.veiculos[0].cliente.nome);
+    if (this.veiculo.id !== undefined)
+      this.form.get('cliente').setValue(this.veiculo.cliente.nome);
   }
+
   filterVeiculo(event) {
     this.form.get('cliente').setValue("");
     if (event.query.length >= 3) {

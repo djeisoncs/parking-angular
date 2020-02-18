@@ -48,7 +48,7 @@ export class PatiosService extends BaseService<Patio> {
   patio.id = patioForm.id;
   patio.descricao = patioForm.descricao;
   patio.numVagas = patioForm.numVagas;
-  patio.valorHora = this.retirarFormatacaoNumero(+patioForm.valorHora);
+  patio.valorHora = this.retirarFormatacaoNumero(+patioForm.valorHora.replace(',','.'));
   return patio;
 }
 
